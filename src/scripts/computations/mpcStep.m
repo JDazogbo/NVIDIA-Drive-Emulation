@@ -24,12 +24,12 @@ function out = mpcStep(v_ref, v_meas, stateSpace, velocity_penalty, prediction_h
     R_input_weight = torque_penalty;     % Input penalty matrix (R)
 
     % Reference signal computation (set point)
-    x_reference = [v_ref; 0; 0]; % Desired state
+    x_reference = [v_ref]; % Desired state
     u_reference = pinv(B_matrix) * (eye(state_dimension)-A_matrix) * x_reference;
 
     % State constraints (Fx * x <= gx)
-    Fx = [1 0 0; -1 0 0; 0 1 0; 0 -1 0; 0 0 1; 0 0 -1];                 % State constraint matrix
-    gx = [1000; 1000; 1000; 1000; 1000; 1000] - Fx * x_reference;    % State constraint bounds (shifted by reference)
+    Fx = [1; -1];                 % State constraint matrix
+    gx = [1000; 1000] - Fx * x_reference;    % State constraint bounds (shifted by reference)
 
     % Input constraints (Fu * u <= gu)
     Fu = [1; -1];                                % Input constraint matrix
@@ -41,7 +41,7 @@ function out = mpcStep(v_ref, v_meas, stateSpace, velocity_penalty, prediction_h
     %===========================================================
 
     % Lifted state/input matrices
-    x_initial = [v_meas; w_meas; i_meas];
+    x_initial = [v_meas;];
 
     X_prediction = zeros(state_dimension*(prediction_horizon+1),1); 
     X_prediction(1:state_dimension,1) = x_initial;  % Predicted state trajectory

@@ -19,6 +19,12 @@ function stateSpace = generateStateSpace(Ts, vehicleParams)
     sys_c = ss(A, B, C, D);
 
     % --- Discretization ---
-    stateSpace = c2d(sys_c, Ts, 'zoh');
+    sys_d = c2d(sys_c, Ts, 'zoh');
+
+    % --- Export to Base Workspace ---
+    stateSpace.A = sys_d.A;
+    stateSpace.B = sys_d.B;
+    stateSpace.C = sys_d.C;
+    stateSpace.D = sys_d.D;
 
 end
