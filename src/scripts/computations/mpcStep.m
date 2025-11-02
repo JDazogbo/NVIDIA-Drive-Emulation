@@ -29,11 +29,11 @@ function out = mpcStep(v_ref, v_meas, stateSpace, velocity_penalty, prediction_h
 
     % State constraints (Fx * x <= gx)
     Fx = [1; -1];                 % State constraint matrix
-    gx = [1000; 1000] - Fx * x_reference;    % State constraint bounds (shifted by reference)
+    gx = [1000; 1000];    % State constraint bounds (shifted by reference)
 
     % Input constraints (Fu * u <= gu)
     Fu = [1; -1];                                % Input constraint matrix
-    gu = [24; 0] - Fu * u_reference;              % Input constraint bounds (shifted by reference)
+    gu = [200; 0];              % Input constraint bounds (shifted by reference)
     
 
     %===========================================================
@@ -41,7 +41,7 @@ function out = mpcStep(v_ref, v_meas, stateSpace, velocity_penalty, prediction_h
     %===========================================================
 
     % Lifted state/input matrices
-    x_initial = [v_meas;];
+    x_initial = [v_meas];
 
     X_prediction = zeros(state_dimension*(prediction_horizon+1),1); 
     X_prediction(1:state_dimension,1) = x_initial;  % Predicted state trajectory
@@ -143,7 +143,7 @@ function out = mpcStep(v_ref, v_meas, stateSpace, velocity_penalty, prediction_h
 
    % Solve QP (fmincon used here)
 
-   f = -2 * H_mat * z_ref;
+   f = -H_mat * z_ref;
     
    options = optimoptions('quadprog', 'Algorithm', 'active-set', 'Display', 'off');
 
