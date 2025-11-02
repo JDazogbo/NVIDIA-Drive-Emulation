@@ -33,7 +33,7 @@ function out = mpcStep(v_ref, v_meas, stateSpace, velocity_penalty, prediction_h
 
     % Input constraints (Fu * u <= gu)
     Fu = [1; -1];                                % Input constraint matrix
-    gu = [200; 0];              % Input constraint bounds (shifted by reference)
+    gu = [800; 800];              % Input constraint bounds (shifted by reference)
     
 
     %===========================================================
