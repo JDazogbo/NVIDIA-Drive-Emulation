@@ -20,7 +20,7 @@ This project emulates the computation and control algorithm implementation simil
 2. Implement and optimize MPC algorithms for GPU execution
 
 <div align="center">
-  <img src="documentation\pictures\simulinkBlockDiagram.png" alt="Hierarchical Architecture for Planning and Control" style="width:70%;" />
+  <img src="documentation\pictures\simulinkBlockDiagram.png" alt="Simulink block diagram with the control algorithm implementation" style="width:70%;" />
   <p><em>Figure 2: SIMULINK Block Diagram of a Model Predictive Controler for torque control on a 1 DOF Vehicle</em></p>
 </div>
 
