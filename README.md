@@ -34,12 +34,20 @@ This project emulates the computation and control algorithm implementation simil
 4. Evaluate real-time performance in a HiL environment
 
 ## References
+
+### NVIDIA On Demand Explanation Video
+
 This project is inspired by NVIDIA's developments in autonomous vehicle computing, particularly their DRIVE AGX Thor platform. For more information, see [NVIDIA's presentation on autonomous driving solutions](https://www.nvidia.com/en-us/on-demand/session/gtcfall20-a21441/).
 
 <div align="center">
   <img src="documentation\pictures\nvidiaPlanningControlArchitecture.png" alt="Hierarchical Architecture for Planning and Control" style="width:70%;" />
   <p><em>Figure 2: NVIDIA Autonomous Driving Planning and Control Architecture </em></p>
 </div>
+
+### Mathworks MATLAB to CUDA translation process
+
+https://www.mathworks.com/videos/deploy-matlab-and-simulink-to-nvidia-gpus-1719423008590.html
+
 
 ## Necessary Tools
 
@@ -58,4 +66,3 @@ This project is inspired by NVIDIA's developments in autonomous vehicle computin
 
 Required Microsoft Visual C++ Redistributables:
 - [Visual C++ Redistributable packages (Windows)](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#latest-supported-redistributable-version)
-
