@@ -40,3 +40,22 @@ This project is inspired by NVIDIA's developments in autonomous vehicle computin
   <img src="documentation\pictures\nvidiaPlanningControlArchitecture.png" alt="Hierarchical Architecture for Planning and Control" style="width:70%;" />
   <p><em>Figure 2: NVIDIA Autonomous Driving Planning and Control Architecture </em></p>
 </div>
+
+## Necessary Tools
+
+### MATLAB/SIMULINK Toolboxes
+
+- [MATLAB](https://www.mathworks.com/products/matlab.html)
+- [Simulink](https://www.mathworks.com/products/simulink.html)
+- [GPU Coder](https://www.mathworks.com/products/gpu-coder.html)
+- [MATLAB Coder](https://www.mathworks.com/products/matlab-coder.html)
+- [Optimization Toolbox](https://www.mathworks.com/products/optimization.html)
+- [Parallel Computing Toolbox](https://www.mathworks.com/products/parallel-computing.html)
+- [Powertrain Blockset](https://www.mathworks.com/products/powertrain.html)
+- [Vehicle Dynamics Blockset](https://www.mathworks.com/products/vehicle-dynamics.html)
+
+### C/C++ Compiler
+
+Required Microsoft Visual C++ Redistributables:
+- [Visual C++ Redistributable packages (Windows)](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#latest-supported-redistributable-version)
+
