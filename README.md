@@ -3,6 +3,12 @@
 ## Overview
 This project emulates the computation and control algorithm implementation similar to those found in NVIDIA DRIVE AGX Thor, the flagship GPU platform for autonomous driving. By utilizing a consumer-grade NVIDIA GTX 1050 Ti GPU, this project demonstrates the feasibility of running advanced autonomous driving algorithms through Software-in-the-Loop (SiL) simulation.
 
+<div align="center">
+  <img src="documentation\pictures\driveCycleAnimation.gif" alt="Hierarchical Architecture for Planning and Control" style="width:90%;" />
+  <p><em>Figure 1: Hardware in the Loop Emulation of the GPU Deployed Model Predictive Control </em></p>
+</div>
+
+
 ## Technical Details
 - **Control Algorithm**: Implementation of Model Predictive Control (MPC) for drive cycle tracking
 - **Development Environment**: MATLAB/Simulink with CUDA integration
