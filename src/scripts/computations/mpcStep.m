@@ -56,26 +56,37 @@ function out = mpcStep(v_ref, v_meas, stateSpace, velocity_penalty, prediction_h
 
 
     % Build AX (state evolution) and BU (control influence)
+    A_powers = zeros(state_dimension, state_dimension, prediction_horizon+1, 'like', A_matrix);
+    A_powers(:,:,1) = eye(state_dimension,'like',A_matrix);
 
-    AX = zeros(state_dimension*(prediction_horizon+1), state_dimension);
-    BU = zeros(state_dimension*(prediction_horizon+1), input_dimension*prediction_horizon);
-    for i = 1:prediction_horizon+1
-        AX((i-1)*state_dimension+1:i*state_dimension,:) = A_matrix^(i-1);
+    for k = 2:prediction_horizon+1
+        A_powers(:,:,k) = A_powers(:,:,k-1) * A_matrix;
     end
-    
+
+    % Preallocate outputs
+    AX = zeros(state_dimension*(prediction_horizon+1), state_dimension, 'like', A_matrix);
+    BU = zeros(state_dimension*(prediction_horizon+1), input_dimension*prediction_horizon, 'like', B_matrix);
+
+    % Fill AX using precomputed A^k
+    for i = 1:prediction_horizon+1
+        row = (i-1)*state_dimension + 1;
+        AX(row:row+state_dimension-1, :) = A_powers(:,:,i);
+    end
+
+    % Fill BU using A^k and B
     for i = 1:prediction_horizon+1
         for j = 1:prediction_horizon
+            row = (i-1)*state_dimension + 1;
+            col = (j-1)*input_dimension + 1;
+
             if i > j
-                BU((i-1)*state_dimension+1:i*state_dimension, ...
-                   (j-1)*input_dimension+1:j*input_dimension) = ...
-                   A_matrix^(i-j-1)*B_matrix;
-            else
-                BU((i-1)*state_dimension+1:i*state_dimension, ...
-                   (j-1)*input_dimension+1:j*input_dimension) = zeros(state_dimension,input_dimension);
-            end    
+                % A^(i-j-1) corresponds to A_powers(:,:,i-j)
+                BU(row:row+state_dimension-1, col:col+input_dimension-1) = ...
+                    A_powers(:,:,i-j) * B_matrix;
+            end
+            % else leave zeros (already allocated as zero)
         end
     end
-
 
     % Extended weighting matrices for optimization
 
