@@ -26,6 +26,9 @@ slprj/
 sccprj/
 codegen/
 
+# Project files
+*.prj
+
 # Cache files
 *.slxc
 
