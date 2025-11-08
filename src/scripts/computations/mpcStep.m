@@ -156,13 +156,9 @@ function out = mpcStep(v_ref, v_meas, stateSpace, velocity_penalty, prediction_h
 
    f = -H_mat * z_ref;
     
-   options = optimoptions('quadprog', 'Algorithm', 'active-set', 'Display', 'off');
-
-   z_solution = quadprog(H_mat, f, inequality_matrix, inequality_vector, equality_matrix, equality_vector, [], [], z_decision, options);
-
-
-   % Warm start: use last solution as initial guess
-   z_decision = z_solution;
+   options = mpcActiveSetOptions;
+   iA0 = false(size(inequality_vector))
+   [z_solution, ~]= mpcActiveSetSolver(H_mat, f, inequality_matrix, inequality_vector, equality_matrix, equality_vector, iA0, options);
 
    out = z_solution((prediction_horizon+1)*state_dimension+1 : ...
                        (prediction_horizon+1)*state_dimension+input_dimension, 1);
