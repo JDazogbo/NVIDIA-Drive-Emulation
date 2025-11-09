@@ -130,7 +130,8 @@ function out = mpcStep(v_ref, v_meas, stateSpace, velocity_penalty, prediction_h
     gX(idfx) = gx;
     
     % Build H
-    H_mat = 2 * blkdiag(QX, RU);
+    epsilon = 1e-6;  % small positive number
+    H_mat = 2 * blkdiag(QX, RU) + epsilon*eye(size(QX,1) + size(RU,1))
 
     %===========================================================
     % 2) Cost: J = (Y - r)'Qy_blk(Y - r) + U'RU
