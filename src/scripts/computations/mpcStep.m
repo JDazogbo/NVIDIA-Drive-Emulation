@@ -88,15 +88,7 @@ function out = mpcStep(v_ref, v_meas, stateSpace, velocity_penalty, prediction_h
         end
     end
 
-    % Extended weighting matrices for optimization
-
-
-    QX = []; 
-    RU = [];
-    FX = []; gX = []; 
-    FU = []; gU = [];
-    
-    % Preallocate with fixed sizes
+    % Extended weighting matrices for optimization. Preallocate with fixed sizes 
     QX = zeros(state_dimension*(prediction_horizon+1), state_dimension*(prediction_horizon+1));
     RU = zeros(input_dimension*(prediction_horizon), input_dimension*(prediction_horizon));
     FX = zeros(size(Fx,1)*(prediction_horizon+1), size(Fx,2)*(prediction_horizon+1));
@@ -157,8 +149,8 @@ function out = mpcStep(v_ref, v_meas, stateSpace, velocity_penalty, prediction_h
    f = -H_mat * z_ref;
     
    options = mpcActiveSetOptions;
-   iA0 = false(size(inequality_vector))
-   [z_solution, ~]= mpcActiveSetSolver(H_mat, f, inequality_matrix, inequality_vector, equality_matrix, equality_vector, iA0, options);
+   iA0 = false(size(inequality_vector));
+   z_solution = mpcActiveSetSolver(H_mat, f, inequality_matrix, inequality_vector, equality_matrix, equality_vector, iA0, options);
 
    out = z_solution((prediction_horizon+1)*state_dimension+1 : ...
                        (prediction_horizon+1)*state_dimension+input_dimension, 1);
