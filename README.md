@@ -64,5 +64,14 @@ https://www.mathworks.com/videos/deploy-matlab-and-simulink-to-nvidia-gpus-17194
 
 ### C/C++ Compiler
 
-Required Microsoft Visual C++ Redistributables:
-- [Visual C++ Redistributable packages (Windows)](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#latest-supported-redistributable-version)
+To generate and compile CUDA code from MATLAB/Simulink, you must install a supported C++ compiler. You cannot simply install the Microsoft Visual C++ Redistributables; you must install the full Visual Studio IDE. This installation provides the necessary `cl.exe` compiler, linker, and build toolchain that MATLAB's GPU Coder requires to translate MATLAB code into CUDA kernels and compile them for your NVIDIA GPU.
+
+If you are using a recent version of MATLAB, you may encounter the following error when compiling with recent Visual Studio versions:
+> `fatal error C1189: #error: -- unsupported Microsoft Visual Studio version!`
+
+This occurs because recent VS 2022 updates increased the compiler version (v19.40+) beyond what the current CUDA Toolkit supports.
+
+**Solution:**
+To resolve this, you must install a previous version of Visual Studio. Since the 2019 Community edition is no longer easily accessible, install **Visual Studio Professional 2019**. You generally do not need an active Professional subscription just to install the C++ toolchains required for compilation.
+
+ **Download Link:** [Visual Studio 2019 Release History](https://learn.microsoft.com/en-us/visualstudio/releases/2019/history)
