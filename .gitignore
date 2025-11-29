@@ -26,6 +26,7 @@ helpsearch*/
 slprj/
 sccprj/
 codegen/
+*.mldatx
 
 # Project files
 *.prj
