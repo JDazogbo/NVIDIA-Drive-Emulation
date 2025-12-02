@@ -25,7 +25,7 @@ function out = mpcStep(v_ref, v_meas, stateSpace, velocity_penalty, prediction_h
 
     % Reference signal computation (set point)
     x_reference = [v_ref]; % Desired state
-    u_reference = pinv(B_matrix) * (eye(state_dimension)-A_matrix) * x_reference;
+    u_reference = B_matrix \((eye(state_dimension)-A_matrix) * x_reference);
 
     % State constraints (Fx * x <= gx)
     Fx = [1; -1];                 % State constraint matrix
