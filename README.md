@@ -17,14 +17,14 @@ This project emulates the computation and control algorithm implementation simil
 
 <div align="center">
   <img src="documentation\pictures\nvidiaDriveWorkflow.png" alt="Hierarchical Architecture for Planning and Control" style="width:70%;" />
-  <p><em>Figure 1: NVIDIA's 3 computer solution for autonomous vehicle development</em></p>
+  <p><em>Figure 2: NVIDIA's 3 computer solution for autonomous vehicle development</em></p>
 </div>
 
 2. Implement and optimize MPC algorithms for GPU execution
 
 <div align="center">
   <img src="documentation\pictures\simulinkBlockDiagram.png" alt="Simulink block diagram with the control algorithm implementation" style="width:70%;" />
-  <p><em>Figure 2: SIMULINK Block Diagram of a Model Predictive Controler for torque control on a 1 DOF Vehicle</em></p>
+  <p><em>Figure 3: SIMULINK Block Diagram of a Model Predictive Controler for torque control on a 1 DOF Vehicle</em></p>
 </div>
 
 3. Demonstrate parallel computation capabilities for autonomous driving applications
@@ -37,7 +37,7 @@ This project is inspired by NVIDIA's developments in autonomous vehicle computin
 
 <div align="center">
   <img src="documentation\pictures\nvidiaPlanningControlArchitecture.png" alt="Hierarchical Architecture for Planning and Control" style="width:70%;" />
-  <p><em>Figure 2: NVIDIA Autonomous Driving Planning and Control Architecture </em></p>
+  <p><em>Figure 4: NVIDIA Autonomous Driving Planning and Control Architecture </em></p>
 </div>
 
 ### Mathworks MATLAB to CUDA translation process
