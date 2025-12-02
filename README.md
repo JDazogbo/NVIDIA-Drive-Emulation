@@ -1,6 +1,4 @@
 # NVIDIA Drive Emulation
-
-## Overview
 This project emulates the computation and control algorithm implementation similar to those found in NVIDIA DRIVE AGX Thor, the flagship GPU platform for autonomous driving. By utilizing a consumer-grade NVIDIA GTX 1050 Ti GPU, this project demonstrates the feasibility of running advanced autonomous driving algorithms through Software-in-the-Loop (SiL) simulation.
 
 <div align="center">
@@ -13,7 +11,6 @@ This project emulates the computation and control algorithm implementation simil
 - **Control Algorithm**: Implementation of Model Predictive Control (MPC) for drive cycle tracking
 - **Development Environment**: MATLAB/Simulink with CUDA integration
 - **Hardware in the Loop (HiL)**: NVIDIA Graphics Card (NVIDIA GTX 1050 Ti) as DRIVE AGX Thor proxy
-- **Performance Analysis**: Real-time comparison between GPU and CPU execution
 
 ## Project Goals
 1. Emulate NVIDIA DRIVE AGX Thor's communication to the device
@@ -31,15 +28,22 @@ This project emulates the computation and control algorithm implementation simil
 </div>
 
 3. Demonstrate parallel computation capabilities for autonomous driving applications
-4. Evaluate real-time performance in a HiL environment
 
 ## References
+
+### NVIDIA On Demand Explanation Video
+
 This project is inspired by NVIDIA's developments in autonomous vehicle computing, particularly their DRIVE AGX Thor platform. For more information, see [NVIDIA's presentation on autonomous driving solutions](https://www.nvidia.com/en-us/on-demand/session/gtcfall20-a21441/).
 
 <div align="center">
   <img src="documentation\pictures\nvidiaPlanningControlArchitecture.png" alt="Hierarchical Architecture for Planning and Control" style="width:70%;" />
   <p><em>Figure 2: NVIDIA Autonomous Driving Planning and Control Architecture </em></p>
 </div>
+
+### Mathworks MATLAB to CUDA translation process
+
+https://www.mathworks.com/videos/deploy-matlab-and-simulink-to-nvidia-gpus-1719423008590.html
+
 
 ## Necessary Tools
 
@@ -56,6 +60,14 @@ This project is inspired by NVIDIA's developments in autonomous vehicle computin
 
 ### C/C++ Compiler
 
-Required Microsoft Visual C++ Redistributables:
-- [Visual C++ Redistributable packages (Windows)](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#latest-supported-redistributable-version)
+To generate and compile CUDA code from MATLAB/Simulink, you must install a supported C++ compiler. You cannot simply install the Microsoft Visual C++ Redistributables; you must install the full Visual Studio IDE. This installation provides the necessary `cl.exe` compiler, linker, and build toolchain that MATLAB's GPU Coder requires to translate MATLAB code into CUDA kernels and compile them for your NVIDIA GPU.
 
+If you are using a recent version of MATLAB, you may encounter the following error when compiling with recent Visual Studio versions:
+> `fatal error C1189: #error: -- unsupported Microsoft Visual Studio version!`
+
+This occurs because recent VS 2022 updates increased the compiler version (v19.40+) beyond what the current CUDA Toolkit supports.
+
+**Solution:**
+To resolve this, you must install a previous version of Visual Studio. Since the 2019 Community edition is no longer easily accessible, install **Visual Studio Professional 2019**. You generally do not need an active Professional subscription just to install the C++ toolchains required for compilation.
+
+ **Download Link:** [Visual Studio 2019 Release History](https://learn.microsoft.com/en-us/visualstudio/releases/2019/history)

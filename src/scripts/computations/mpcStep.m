@@ -25,7 +25,7 @@ function out = mpcStep(v_ref, v_meas, stateSpace, velocity_penalty, prediction_h
 
     % Reference signal computation (set point)
     x_reference = [v_ref]; % Desired state
-    u_reference = pinv(B_matrix) * (eye(state_dimension)-A_matrix) * x_reference;
+    u_reference = B_matrix \((eye(state_dimension)-A_matrix) * x_reference);
 
     % State constraints (Fx * x <= gx)
     Fx = [1; -1];                 % State constraint matrix
@@ -88,15 +88,7 @@ function out = mpcStep(v_ref, v_meas, stateSpace, velocity_penalty, prediction_h
         end
     end
 
-    % Extended weighting matrices for optimization
-
-
-    QX = []; 
-    RU = [];
-    FX = []; gX = []; 
-    FU = []; gU = [];
-    
-    % Preallocate with fixed sizes
+    % Extended weighting matrices for optimization. Preallocate with fixed sizes 
     QX = zeros(state_dimension*(prediction_horizon+1), state_dimension*(prediction_horizon+1));
     RU = zeros(input_dimension*(prediction_horizon), input_dimension*(prediction_horizon));
     FX = zeros(size(Fx,1)*(prediction_horizon+1), size(Fx,2)*(prediction_horizon+1));
@@ -138,7 +130,8 @@ function out = mpcStep(v_ref, v_meas, stateSpace, velocity_penalty, prediction_h
     gX(idfx) = gx;
     
     % Build H
-    H_mat = 2 * blkdiag(QX, RU);
+    epsilon = 1e-6;  % small positive number
+    H_mat = 2 * blkdiag(QX, RU) + epsilon*eye(size(QX,1) + size(RU,1));
 
     %===========================================================
     % 2) Cost: J = (Y - r)'Qy_blk(Y - r) + U'RU
@@ -156,13 +149,9 @@ function out = mpcStep(v_ref, v_meas, stateSpace, velocity_penalty, prediction_h
 
    f = -H_mat * z_ref;
     
-   options = optimoptions('quadprog', 'Algorithm', 'active-set', 'Display', 'off');
-
-   z_solution = quadprog(H_mat, f, inequality_matrix, inequality_vector, equality_matrix, equality_vector, [], [], z_decision, options);
-
-
-   % Warm start: use last solution as initial guess
-   z_decision = z_solution;
+   options = mpcActiveSetOptions;
+   iA0 = false(size(inequality_vector));
+   z_solution = mpcActiveSetSolver(H_mat, f, inequality_matrix, inequality_vector, equality_matrix, equality_vector, iA0, options);
 
    out = z_solution((prediction_horizon+1)*state_dimension+1 : ...
                        (prediction_horizon+1)*state_dimension+input_dimension, 1);
