@@ -1,6 +1,4 @@
 # NVIDIA Drive Emulation
-
-## Overview
 This project emulates the computation and control algorithm implementation similar to those found in NVIDIA DRIVE AGX Thor, the flagship GPU platform for autonomous driving. By utilizing a consumer-grade NVIDIA GTX 1050 Ti GPU, this project demonstrates the feasibility of running advanced autonomous driving algorithms through Software-in-the-Loop (SiL) simulation.
 
 <div align="center">
@@ -13,7 +11,6 @@ This project emulates the computation and control algorithm implementation simil
 - **Control Algorithm**: Implementation of Model Predictive Control (MPC) for drive cycle tracking
 - **Development Environment**: MATLAB/Simulink with CUDA integration
 - **Hardware in the Loop (HiL)**: NVIDIA Graphics Card (NVIDIA GTX 1050 Ti) as DRIVE AGX Thor proxy
-- **Performance Analysis**: Real-time comparison between GPU and CPU execution
 
 ## Project Goals
 1. Emulate NVIDIA DRIVE AGX Thor's communication to the device
@@ -31,7 +28,6 @@ This project emulates the computation and control algorithm implementation simil
 </div>
 
 3. Demonstrate parallel computation capabilities for autonomous driving applications
-4. Evaluate real-time performance in a HiL environment
 
 ## References
 
