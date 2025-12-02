@@ -1,8 +1,9 @@
-//
-// mpcStep.cu
-//
-// Code generation for function 'mpcStep'
-//
+/*
+*
+*    These are codegenerated versions of the MPC 
+*    control step that are used to run the algorithm on GPU
+*    
+*/ 
 
 // Include files
 #include "mpcStep.h"
