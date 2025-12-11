@@ -62,7 +62,7 @@ The [Deploy MATLAB and Simulink to NVIDIA GPUs](https://www.mathworks.com/videos
 
 
 
-## Necessary Tools
+## Tools and Setup
 
 ### MATLAB/SIMULINK Toolboxes
 
@@ -84,7 +84,6 @@ If you are using a recent version of MATLAB, you may encounter the following err
 
 This occurs because recent VS 2022 updates increased the compiler version (v19.40+) beyond what the current CUDA Toolkit supports.
 
-**Solution:**
 To resolve this, you must install a previous version of Visual Studio. Since the 2019 Community edition is no longer easily accessible, install **Visual Studio Professional 2019**. You generally do not need an active Professional subscription just to install the C++ toolchains required for compilation.
 
  **Download Link:** [Visual Studio 2019 Release History](https://learn.microsoft.com/en-us/visualstudio/releases/2019/history)
