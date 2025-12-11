@@ -3,28 +3,28 @@ This project emulates the computation and control algorithm implementation simil
 
 <div align="center">
   <img src="documentation\pictures\driveCycleAnimation.gif" alt="Hierarchical Architecture for Planning and Control" style="width:90%;" />
-  <p><em>Figure 1: Processor in the Loop Emulation of the GPU Deployed Model Predictive Control </em></p>
+  <p><em>Figure 1: Processor in the Loop Emulation of the GPU Deployed Model Predictive Control.</em></p>
 </div>
 
 
 ## Technical Details
-- **Control Algorithm**: Implementation of Model Predictive Control (MPC) for drive cycle tracking
-- **Development Environment**: MATLAB/Simulink with CUDA integration
-- **Processor in the Loop (HiL)**: NVIDIA Graphics Card (NVIDIA GTX 1050 Ti) as DRIVE AGX Thor proxy
+- **Control Algorithm**: Implementation of Model Predictive Control (MPC) for drive cycle tracking.
+- **Development Environment**: MATLAB/Simulink with CUDA integration.
+- **Processor in the Loop (HiL)**: NVIDIA Graphics Card (NVIDIA GTX 1050 Ti) as DRIVE AGX Thor proxy.
 
 ## Project Goals
-1. Emulate NVIDIA DRIVE AGX Thor's communication to the device
+1. Emulate NVIDIA DRIVE AGX Thor's communication to the device.
 
 <div align="center">
   <img src="documentation\pictures\nvidiaDriveWorkflow.png" alt="Hierarchical Architecture for Planning and Control" style="width:70%;" />
-  <p><em>Figure 2: NVIDIA's 3 computer solution for autonomous vehicle development</em></p>
+  <p><em>Figure 2: NVIDIA's 3 computer solution for autonomous vehicle .</em></p>
 </div>
 
-2. Implement and optimize MPC algorithms for GPU execution
+2. Implement and optimize MPC algorithms for GPU execution.
 
 <div align="center">
   <img src="documentation\pictures\simulinkBlockDiagram.png" alt="Simulink block diagram with the control algorithm implementation" style="width:70%;" />
-  <p><em>Figure 3: SIMULINK Block Diagram of a Model Predictive Controler for torque control on a 1 DOF Vehicle</em></p>
+  <p><em>Figure 3: SIMULINK Block Diagram of a Model Predictive Controler for torque control on a 1 DOF Vehicle.</em></p>
 </div>
 
 ## Key Project Components
@@ -43,7 +43,7 @@ Contains the generated C++/CUDA source code (`.cu`, `.h`). These files represent
 [`src/simulations/main.slx`](src/simulations/main.slx) is the top-level simulation harness. It integrates the vehicle dynamics plant, the drive cycle reference generator, and the controller into a complete closed-loop simulation.
 
 
-[`src/models/modelPredictiveController.slx`](src/models/modelPredictiveController.slx) is the specific controller subsystem. This model wraps the MATLAB Function block
+[`src/models/modelPredictiveController.slx`](src/models/modelPredictiveController.slx) is the specific controller subsystem. This model wraps the MATLAB Function block.
 
 ## References
 
@@ -53,7 +53,7 @@ This project is inspired by NVIDIA's developments in autonomous vehicle computin
 
 <div align="center">
   <img src="documentation\pictures\nvidiaPlanningControlArchitecture.png" alt="Hierarchical Architecture for Planning and Control" style="width:70%;" />
-  <p><em>Figure 4: NVIDIA Autonomous Driving Planning and Control Architecture </em></p>
+  <p><em>Figure 4: NVIDIA Autonomous Driving Planning and Control Architecture.</em></p>
 </div>
 
 ### Mathworks MATLAB to CUDA translation process
