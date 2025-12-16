@@ -6,6 +6,11 @@ This project emulates the computation and control algorithm implementation simil
   <p><em>Figure 1: Processor in the Loop Emulation of the GPU Deployed Model Predictive Control.</em></p>
 </div>
 
+## Technical Details
+- **Control Algorithm**: Implementation of Model Predictive Control (MPC) for drive cycle tracking.
+- **Development Environment**: MATLAB/Simulink with CUDA integration.
+- **Processor in the Loop (HiL)**: NVIDIA Graphics Card (NVIDIA GTX 1050 Ti) as DRIVE AGX Thor proxy.
+
 ## Project Goals
 ### Emulate NVIDIA DRIVE AGX Thor's communication to the device.
 
