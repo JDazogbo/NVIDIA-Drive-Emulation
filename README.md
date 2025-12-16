@@ -58,7 +58,10 @@ This project is inspired by NVIDIA's developments in autonomous vehicle computin
 
 The [Deploy MATLAB and Simulink to NVIDIA GPUs](https://www.mathworks.com/videos/deploy-matlab-and-simulink-to-nvidia-gpus-1719423008590.html) provides a comprehensive overview of the workflow for generating optimized CUDA code from MATLAB and Simulink and is what served as a guide for the development of this project. It demonstrates how to use GPU Coder to translate high-level MATLAB code into CUDA kernels that can be deployed directly onto NVIDIA GPUs for accelerated performance.
 
-
+<div align="center">
+  <img src="documentation\pictures\gpuCoderWorkflow.PNG" alt="Hierarchical Architecture for Planning and Control"/>
+  <p><em>Figure 5: Simulink workflow for development and deployment of GPU applications.</em></p>
+</div>
 
 ## Tools and Setup
 
