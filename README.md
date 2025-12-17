@@ -34,7 +34,7 @@ In parallel, this project also focuses on optimizing a Model Predictive Control 
 
 ### Control Logic (MATLAB)
     
-The core [Model Predictive Control algorithm](src/scripts/computations/mpcStep.m). It implements a condensed Quadratic Programming (QP) formulation to calculate optimal voltage inputs based on the reference velocity and current state. This is the source file used by GPU Coder to generate the CUDA kernels.
+The core [Model Predictive Control algorithm](src/scripts/computations/mpcStep.m). It implements a condensed Quadratic Programming (QP) formulation to calculate optimal torque inputs based on the reference velocity and current state. This is the source file used by GPU Coder to generate the CUDA kernels.
 
 ### GPU Acceleration (CUDA)
 
